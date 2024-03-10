@@ -1,0 +1,28 @@
+{% extends "library/layout.html" %}
+{% load static %}
+
+
+
+ {% block body %} 
+ <style>
+  .btn-sign-up {
+    --bs-btn-bg: #51829B;
+    color: white !important;
+  }
+  .btn-sign-up:hover {
+    --bs-btn-bg: #f8f9fa;
+    color: #333 !important;
+  }
+ </style>
+  <main class='px-3'>
+    <h3 class="mb-0"  style=";font-size: 45px;color: #ffde59; font-size: 71px !important;">BookLib !</h3>
+
+    <h1 style='font-size: 56px;'>Want to read?</h1>
+    <p class="lead" style=' font-size: 23px !important;'>We got you covered.</p>
+    <p class="lead">
+      <a href="{% url "login" %}" class="btn btn-lg btn-light fw-bold border-white" >LOGIN</a>
+      <a href="{% url "register" %}" class="btn btn-lg btn-light fw-bold border-white btn-sign-up">SIGN UP</a>
+    </p>
+  </main>
+
+  {% endblock %}

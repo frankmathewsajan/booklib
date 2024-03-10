@@ -1,0 +1,69 @@
+{% extends "library/layout.html" %}
+{% load static %}
+
+
+{% block body %} 
+
+<section>
+    <div class="container py-5 card p-5">
+
+  
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+                Account Settings
+                <div class="d-flex justify-content-center mb-2 mt-2">
+                  <a href='{% url "index" %}' type="button" class="btn btn-outline-primary">Home</a>
+              </div>
+                <div class="d-flex justify-content-center mb-2 mt-2">
+                    <a href='{% url "logout" %}' type="button" class="btn btn-outline-warning">Logout</a>
+                </div>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">ID</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.username}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Genres</p>
+                  <br>
+                </div>
+                <div class="col-sm-9">
+                  <div class="text-muted mb-0" style='overflow-wrap: break-word;'>
+                    {% for genre in favorite_genres %}
+                    <span>{{genre}}</span><hr>
+                    {% endfor %}
+                    <a class='btn btn-outline-dark btn-sm' href='{% url "choice" %}'>Edit</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

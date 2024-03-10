@@ -1,0 +1,44 @@
+{% extends "library/layout.html" %}
+{% load static %}
+
+{% block header %}
+<div>
+    <h3 class="float-md-start mb-0"  style="font-size: 45px !important;color: #ffde59;">BookLib!</h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link fw-bold py-1 px-0 text-white {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url "index" %}">Home</a>
+        <a class="nav-link fw-bold py-1 px-0 text-white {% if request.path == '/login/' %}active{% endif %}" href="{% url "login" %}">Login</a> 
+        <a class="nav-link fw-bold py-1 px-0 text-white {% if request.path == '/register/' %}active{% endif %}" href="{% url "register" %}">Register</a> 
+
+    </nav>
+</div>
+  
+{% endblock %}
+
+{% block body %}
+  <main class="px-3 card">
+    {% if message %}
+    <div>{{ message }}</div>
+    {% endif %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <h3 class="float-start my-3">Register</h3>
+        <div class="mb-3">
+            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-outline-dark float-end m-3">Register</button>
+    </form>
+  </main>
+{% endblock %}
+
